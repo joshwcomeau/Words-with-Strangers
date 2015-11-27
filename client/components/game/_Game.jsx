@@ -5,12 +5,11 @@ Game = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    console.log("Get meteor data running");
     let data   = {};
     let gameId = this.props._id
     let handle = Meteor.subscribe('game', gameId);
 
-    if ( handle.ready() ) data.game = Games.findOne(gameId)
+    if ( handle.ready() ) data.game = Games.findOne(gameId);
 
     return data;
   },

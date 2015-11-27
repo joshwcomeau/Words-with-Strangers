@@ -1,10 +1,16 @@
 MainLayout = React.createClass({
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    return {
+      currentUser: Meteor.user()
+    };
+  },
+
   render() {
     return (
       <div>
-        <header>
-          <h1>Words with Strangers</h1>
-        </header>
+        <Header currentUser={this.data.currentUser} />
 
         {this.props.content}
 

@@ -1,0 +1,15 @@
+@import 'variables';
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: $teal;
+}
+
+html, body, input, button, textarea, select {
+  font-family: 'Avenir', sans-serif;
+  font-weight: 300;
+}
