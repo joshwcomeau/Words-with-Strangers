@@ -3,7 +3,17 @@
 $header-height: 4rem;
 $header-height-button: 2.5rem;
 
+#main-layout-header-spacer {
+  position: relative;
+  height: $header-height;
+}
+
 #main-layout-header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
   background: $white;
   height: $header-height;
   line-height: $header-height;

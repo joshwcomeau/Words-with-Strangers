@@ -42,9 +42,8 @@ Register = React.createClass({
 
             { /* Step 1 - Auth info like email/pass, or Oauth verification */ }
             <div className="card-header">
-              <h1>Welcome to Tori!</h1>
-              <h2>Registration is simple.</h2>
-              <h3>Use the form below.</h3>
+              <h1>Registration</h1>
+              <h3>The world's shortest signup form.</h3>
             </div>
             <div className="card-body">
               <button className="button twitter">
@@ -65,18 +64,7 @@ Register = React.createClass({
                 className="user-field username"
                 autoComplete="false"
                 />
-              <label htmlFor="username">Username</label>
-                <span className="error-message"></span>
-              </div>
-
-              <div className="floating-input">
-                <input type="text"
-                name="email"
-                id="email"
-                className="user-field email"
-                autoComplete="false"
-                />
-              <label htmlFor="email">Email Address</label>
+              <label htmlFor="username">Choose A Username</label>
                 <span className="error-message"></span>
               </div>
 
@@ -87,13 +75,13 @@ Register = React.createClass({
                 className="user-field password"
                 autoComplete="false"
                 />
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Choose A Password</label>
                 <span className="error-message"></span>
               </div>
 
               <button className="button continue">
                 <i className="fa fa-caret-right right"></i>
-                Continue
+                Register
               </button>
 
             </div>

@@ -11,6 +11,7 @@ MainLayout = React.createClass({
     return (
       <div>
         <Header currentUser={this.data.currentUser} />
+        <div id="main-layout-header-spacer"></div>
 
         {this.props.content}
 
