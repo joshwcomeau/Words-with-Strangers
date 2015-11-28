@@ -1,0 +1,44 @@
+@import 'variables';
+
+$square-size: 50px;
+$num-of-squares: 12;
+$tile-size: 42px;
+
+#game {
+  #board {
+    // TODO: Make this a little more responsive
+    width:  $square-size * $num-of-squares;
+    height: $square-size * $num-of-squares;
+    display: flex;
+    flex-wrap: wrap;
+    background: $lightgray;
+
+    .board-square {
+      position: relative;
+      width: $square-size;
+      height: $square-size;
+      background: $white;
+      border: 1px solid $mediumgray;
+
+    }
+
+    .tile {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: $tile-size;
+      height: $tile-size;
+      line-height: $tile-size;
+      text-align: center;
+      font-size: $tile-size * 0.5;
+      font-weight: 700;
+      background: $red;
+      color: $white;
+      cursor: default;
+      border-radius: 3px;
+    }
+  }
+}

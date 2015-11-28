@@ -7,9 +7,31 @@ Game = React.createClass({
   getMeteorData() {
     let data   = {};
     let gameId = this.props.gameId;
-    let handle = Meteor.subscribe('game', gameId);
+    // TODO: Connect this to real data
+    // let handle = Meteor.subscribe('game', gameId);
+    // if ( handle.ready() ) data.game = Games.findOne(gameId);
+    data.game = {
+      title: 'Words with Winston',
+      createdAt: moment().subtract(2, 'minutes').toISOString()
+    };
 
-    if ( handle.ready() ) data.game = Games.findOne(gameId);
+    data.tiles = [
+      {
+        letter: "B",
+        position: [2, 2]
+      }, {
+        letter: "O",
+        position: [2, 3]
+      }, {
+        letter: "O",
+        position: [2, 4]
+      }, {
+        letter: "M",
+        position: [2, 5]
+      },
+    ]
+
+
 
     return data;
   },
@@ -17,8 +39,8 @@ Game = React.createClass({
   renderGame() {
     //
     return (
-      <div>
-        <Board game={this.data.game} />
+      <div id="game">
+        <Board {...this.data} />
         <TileRack />
 
         <SidePanel game={this.data.game} />
