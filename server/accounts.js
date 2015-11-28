@@ -65,7 +65,9 @@ Accounts.onCreateUser(function(options, user) {
   }
 
   if ( !user.profile.photo ) {
-    user.profile.photo = '/images/default-profile-photo.png';
+    // Assign a random animal photo
+    let avatarNum = _.sample([1,2,3]);
+    user.profile.photo = `/images/avatars/animal-0${avatarNum}.png`;
   }
 
   user.gamesPlayed  = 0;

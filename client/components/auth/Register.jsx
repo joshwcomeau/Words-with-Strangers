@@ -15,7 +15,7 @@ Register = React.createClass({
     });
   },
   submit(model, reset, invalidate) {
-    Meteor.call('createPasswordUser', model, (err, result) => {
+    Accounts.createUser(model, (err, result) => {
       if ( err) {
         switch (err.reason) {
           case 'Username already exists.':
@@ -36,9 +36,8 @@ Register = React.createClass({
       // We've logged in! Redirect to the games list
       FlowRouter.go('gameList');
     });
-
-
   },
+
   render() {
     return (
       <div id="register">

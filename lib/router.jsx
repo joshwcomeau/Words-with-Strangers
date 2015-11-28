@@ -10,7 +10,9 @@ FlowRouter.route("/", {
 FlowRouter.route("/games", {
   name: "gameList",
   action() {
-    // TODO
+    ReactLayout.render(MainLayout, {
+      content: <GameList />
+    });
   }
 });
 

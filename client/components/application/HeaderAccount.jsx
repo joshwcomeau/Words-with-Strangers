@@ -18,10 +18,10 @@ HeaderAccount = React.createClass({
   },
   render() {
     return (
-      <span className="nav-link header-account" style={{
+      <span className="nav-link header-account">
+        <button className="account-thumb" onClick={this.toggleMenu} style={{
           backgroundImage: `url('${this.props.currentUser.profile.photo}')`
-      }}>
-        <button className="account-thumb" onClick={this.toggleMenu} ></button>
+        }}></button>
       <div className={this.state.menuOpen ? '' : 'hide'}>
         <div className="dropdown-menu-blocker account-menu-blocker" onClick={this.toggleMenu}></div>
           <div className="dropdown-menu account-menu right-arrow">
