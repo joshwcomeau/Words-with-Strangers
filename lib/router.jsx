@@ -20,3 +20,12 @@ FlowRouter.route("/games/:_id", {
     });
   }
 });
+
+FlowRouter.route("/register", {
+  name: "register",
+  action(params) {
+    ReactLayout.render(MainLayout, {
+      content: <Register />
+    });
+  }
+});

@@ -23,8 +23,22 @@
     top: 1rem;
     left: 0;
     right: 0;
-    border-bottom: 1px solid darken($offwhite, 10%);
+    border-bottom: 1px solid darken($lightgray, 10%);
   }
+}
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.card {
+  background: $white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
 }
 
 
