@@ -5,7 +5,6 @@ HeaderLogIn = React.createClass({
     }
   },
   toggleMenu() {
-    console.log("Toggling state:", !this.state.menuOpen)
     this.setState({ menuOpen: !this.state.menuOpen });
   },
   submitLogin(ev) {

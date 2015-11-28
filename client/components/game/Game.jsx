@@ -6,7 +6,7 @@ Game = React.createClass({
 
   getMeteorData() {
     let data   = {};
-    let gameId = this.props._id
+    let gameId = this.props.gameId;
     let handle = Meteor.subscribe('game', gameId);
 
     if ( handle.ready() ) data.game = Games.findOne(gameId);
