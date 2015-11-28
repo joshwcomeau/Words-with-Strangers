@@ -31,10 +31,11 @@ $header-height-button: 2.5rem;
   nav {
     position: absolute;
     top: 0;
-    right: 1rem;
+    right: 0;
     bottom: 0;
 
     .nav-link {
+      float: right;
       margin-left: 1.5rem;
       color: $navy;
     }
@@ -69,7 +70,7 @@ $header-height-button: 2.5rem;
 
     .account-menu {
       top: $header-height + 0.4rem;
-      right: 1rem;
+      right: 0.8rem;
       white-space: nowrap;
       padding: 0.3rem 0;
 
@@ -111,7 +112,6 @@ $header-height-button: 2.5rem;
   }
 
   .header-log-in {
-    display: inline-block;
     position: relative;
 
     .log-in-text {
