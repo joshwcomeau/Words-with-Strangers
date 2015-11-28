@@ -14,22 +14,30 @@ Register = React.createClass({
       canSubmit: false
     });
   },
-  submit(model) {
-    Accounts.createUser(model, function(err, response) {
-      if ( !err ) return;
+  submit(model, reset, invalidate) {
+    Meteor.call('createPasswordUser', model, (err, result) => {
+      if ( err) {
+        switch (err.reason) {
+          case 'Username already exists.':
+            return invalidate({
+              username: 'Sorry, someone else has already taken that username. What a jerk.'
+            })
+            break;
+          case 'reserved-username':
+            return invalidate({
+              username: 'Sorry, that username is a reserved word =('
+            })
+            break;
+          default:
+            return alert("Sorry, an unknown error has occured.")
+        }
+      }
 
-      // switch (err.reason) {
-      //   case 'Username already exists.':
-      //     instance.errors.set('username', 'Sorry, someone else has already taken that username. What a jerk.');
-      //     break;
-      //   case 'Email already exists.':
-      //     instance.errors.set('email', 'This email has already been used to register for an account! Are you trying to log in?');
-      //     break;
-      //   case 'reserved-username':
-      //     instance.errors.set('username', err.details);
-      //     break;
-      // }
+      // We've logged in! Redirect to the games list
+      FlowRouter.go('gameList');
     });
+
+
   },
   render() {
     return (
