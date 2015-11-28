@@ -62,9 +62,11 @@ Register = React.createClass({
               type="text"
               label="Choose a Username"
               validations={{
+                isAlphanumeric: true,
                 maxLength: 30
               }}
               validationErrors={{
+                isAlphanumeric: "Our deepest apologies, but usernames can only contain letters and numbers.",
                 maxLength: "Egad! That username is too long. Keep it under 30, please."
               }}
               required
