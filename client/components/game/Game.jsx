@@ -8,30 +8,11 @@ Game = React.createClass({
     let data   = {};
     let gameId = this.props.gameId;
     // TODO: Connect this to real data
-    // let handle = Meteor.subscribe('game', gameId);
-    // if ( handle.ready() ) data.game = Games.findOne(gameId);
-    data.game = {
-      title: 'Words with Winston',
-      createdAt: moment().subtract(2, 'minutes').toISOString()
-    };
-
-    data.tiles = [
-      {
-        letter: "B",
-        position: [2, 2]
-      }, {
-        letter: "O",
-        position: [2, 3]
-      }, {
-        letter: "O",
-        position: [2, 4]
-      }, {
-        letter: "M",
-        position: [2, 5]
-      },
-    ]
-
-
+    let handle = Meteor.subscribe('game', gameId);
+    if ( handle.ready() ) {
+      data.game = Games.findOne(gameId);
+      data.tiles = Tiles.find({ gameId: gameId }).fetch();
+    }
 
     return data;
   },

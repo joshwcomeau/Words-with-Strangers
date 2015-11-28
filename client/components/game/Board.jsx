@@ -7,26 +7,18 @@ Board = React.createClass({
     });
   },
   renderSquare(num) {
-
-
     // Figure out this square's co-ordinates.
     const x = num % BOARD_SIZE;
     const y = Math.floor(num / BOARD_SIZE);
 
-    // Figure out if this square has a tile in it
-    if ( this.props.tiles ) {
-
-    }
-
     return (
-      <BoardSquare key={x + '-' + y}>
+      <BoardSquare key={x + '-' + y} x={x} y={y} gameId={this.props.game._id}>
         {this.findTileAtCoords(x,y)}
       </BoardSquare>
     );
 
   },
   render() {
-    console.log("Rendering with tiles", this.props.tiles)
     let squares = [];
 
     for ( let num = 0; num < (BOARD_SIZE * BOARD_SIZE); num++ ) {
