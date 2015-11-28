@@ -34,7 +34,7 @@ Register = React.createClass({
       }
 
       // We've logged in! Redirect to the games list
-      FlowRouter.go('gameList');
+      FlowRouter.go('gamesList');
     });
   },
 

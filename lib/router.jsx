@@ -8,10 +8,10 @@ FlowRouter.route("/", {
 });
 
 FlowRouter.route("/games", {
-  name: "gameList",
+  name: "gamesList",
   action() {
     ReactLayout.render(MainLayout, {
-      content: <GameList />
+      content: <GamesList />
     });
   }
 });
@@ -20,7 +20,7 @@ FlowRouter.route("/games/:gameId", {
   name: "game",
   action(params) {
     ReactLayout.render(MainLayout, {
-      content: <Game gameId={params.gameId} />
+      content: <Game {...params} />
     });
   }
 });
@@ -38,7 +38,7 @@ FlowRouter.route("/profile/:profileId", {
   name: "profile",
   action(params) {
     ReactLayout.render(MainLayout, {
-      content: <Profile profileId={params.profileId} />
+      content: <Profile {...params} />
     })
   }
 });
