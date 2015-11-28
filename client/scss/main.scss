@@ -13,3 +13,15 @@ html, body, input, button, textarea, select {
   font-family: 'Avenir', sans-serif;
   font-weight: 300;
 }
+
+a {
+  text-decoration: none;
+  color: $red;
+}
+
+form {
+  // Remove ugly yellow colour from Chrome autofill.
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+  }
+}
