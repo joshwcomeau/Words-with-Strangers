@@ -12,14 +12,6 @@ form {
     padding: 0.5rem;
     font-size: 0.7rem;
     font-weight: 700;
-
-    &.invalid {
-      display: block;
-    }
-
-    &.valid {
-      display: none;
-    }
   }
 
   .floating-input {
@@ -39,25 +31,21 @@ form {
       &:focus {
         border-bottom: 3px solid $teal;
       }
-      &.invalid.dirty {
+      &.invalid {
         border-bottom: 3px solid $red !important;
       }
-      &.touched {
-        border-bottom: 3px solid $teal;
-      }
 
-
-      &:focus + label, &.invalid.dirty + label, &.valid + label {
+      &:focus + label, &.filled + label {
         transform: translate(0,-24px);
         font-size: 0.7em;
         transition: 0.2s;
       }
 
-      &.invalid.dirty + label {
+      &.invalid + label {
         color: $red !important;
       }
 
-      &.touched + label {
+      &.valid + label {
         color: $teal;
       }
     }

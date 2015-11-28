@@ -4,12 +4,12 @@ Register = React.createClass({
       canSubmit: false
     }
   },
-  enableSubmit() {
+  enableButton() {
     this.setState({
       canSubmit: true
     });
   },
-  disableSubmit() {
+  disableButton() {
     this.setState({
       canSubmit: false
     });
@@ -35,58 +35,62 @@ Register = React.createClass({
     return (
       <div id="register">
         <div className="card">
-          <form id="register-form-step1">
-            {/* fake fields are a workaround for chrome autofill getting the wrong fields */}
-            <input style={{ display: "none" }} type="text" name="fakeusernameremembered"/>
-            <input style={{ display: "none" }} type="password" name="fakepasswordremembered"/>
 
-            { /* Step 1 - Auth info like email/pass, or Oauth verification */ }
-            <div className="card-header">
-              <h1>Registration</h1>
-              <h3>The world's shortest signup form.</h3>
-            </div>
-            <div className="card-body">
-              <button className="button twitter">
-                <i className="fa fa-twitter"></i>
-                Sign Up With Twitter
-              </button>
-              <button className="button google">
-                <i className="fa fa-google-plus"></i>
-                Sign Up With Google
-              </button>
+          { /* Step 1 - Auth info like email/pass, or Oauth verification */ }
+          <div className="card-header">
+            <h1>Registration</h1>
+            <h3>The world's shortest signup form.</h3>
+          </div>
+          <div className="card-body">
+            <button className="button twitter">
+              <i className="fa fa-twitter"></i>
+              Sign Up With Twitter
+            </button>
+            <button className="button google">
+              <i className="fa fa-google-plus"></i>
+              Sign Up With Google
+            </button>
 
-              <div className="divider" data-text="Or"></div>
+            <div className="divider" data-text="Or"></div>
+            <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
+              {/* fake fields are a workaround for chrome autofill getting the wrong fields */}
+              <input style={{ display: "none" }} type="text" name="fakeusernameremembered"/>
+              <input style={{ display: "none" }} type="password" name="fakepasswordremembered"/>
 
-              <div className="floating-input">
-                <input type="text"
-                name="username"
-                id="username"
-                className="user-field username"
-                autoComplete="false"
-                />
-              <label htmlFor="username">Choose A Username</label>
-                <span className="error-message"></span>
-              </div>
+              <FloatingTextField
+              name="username"
+              type="text"
+              label="Choose a Username"
+              validations={{
+                maxLength: 30
+              }}
+              validationErrors={{
+                maxLength: "Egad! That username is too long. Keep it under 30, please."
+              }}
+              required
+              />
 
-              <div className="floating-input">
-                <input type="password"
-                name="password"
-                id="password"
-                className="user-field password"
-                autoComplete="false"
-                />
-              <label htmlFor="password">Choose A Password</label>
-                <span className="error-message"></span>
-              </div>
+              <FloatingTextField
+              name="password"
+              type="password"
+              label="Choose a Password"
+              validations={{
+                minLength: 8,
+                maxLength: 50
+              }}
+              validationErrors={{
+                minLength: "Gotta be at least 8 characters. Don't be so hackable!",
+                maxLength: "Woah there, cowboy. Password length is limited to 50 characters."
+              }}
+              required
+              />
 
-              <button className="button continue">
+              <button type="submit" className="button continue" disabled={!this.state.canSubmit}>
                 <i className="fa fa-caret-right right"></i>
                 Register
               </button>
-
-            </div>
-          </form>
-
+            </Formsy.Form>
+          </div>
         </div>
       </div>
     );
