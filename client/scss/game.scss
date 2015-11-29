@@ -111,6 +111,19 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
     background: $white;
     display: flex;
 
+    &.my-turn {
+      .turn-indicator {
+        background: $navy;
+        transition: 0.4s;
+      }
+    }
+    &.their-turn {
+      .turn-indicator {
+        background: $mediumgray;
+        transition: 0.4s;
+      }
+    }
+
     & > div, & > button {
       display: inline-block;
     }
@@ -120,7 +133,6 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
       line-height: 50px;
       text-align: center;
       font-weight: 500;
-      background: $navy;
       color: $white;
       padding: 0 1rem;
 
@@ -128,6 +140,16 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
     .submit-word-container {
       padding: $gutter-width;
       flex: 1;
+
+      .submit-word {
+        width: 100%;
+        background: $red;
+        color: $white;
+
+        &:disabled {
+          background: $mediumgray;
+        }
+      }
     }
 
     .other-actions-container {
@@ -146,13 +168,13 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
         font-weight: 500;
         transition: background 0.5s;
         margin-right: $gutter-width;
+
+        &:disabled {
+          background: $mediumgray;
+        }
       }
     }
 
-    .submit-word {
-      width: 100%;
-      background: $red;
-      color: $white;
-    }
+
   }
 }

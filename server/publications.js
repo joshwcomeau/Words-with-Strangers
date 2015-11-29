@@ -8,6 +8,6 @@ Meteor.publish('game', function(gameId) {
 
 Meteor.publish('games', function() {
   return [
-    Games.find({ isActive: true })
+    Games.find({ status: 'waiting' })
   ];
 });
