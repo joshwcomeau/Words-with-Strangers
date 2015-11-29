@@ -10,7 +10,7 @@ Tile = React.createClass({
 
     return connectDragSource(
       <div className="tile" style={{
-        opacity: isDragging ? 0.5 : 1
+        opacity: isDragging ? 0 : 1
       }}>{this.props.tile.letter}</div>
     );
   }
@@ -19,8 +19,7 @@ Tile = React.createClass({
 
 const tileSource = {
   beginDrag(props) {
-    console.log("Drag begun")
-    return {};
+    return props.tile;
   }
 };
 
