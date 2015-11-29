@@ -23,7 +23,6 @@ Meteor.methods({
 
 
 Accounts.onCreateUser(function(options, user) {
-  console.log("REQUEST RECEIVED", options, user)
   user.profile = user.profile || {};
 
   // If coming from Twitter, we wanna use a bunch of their twitter info.

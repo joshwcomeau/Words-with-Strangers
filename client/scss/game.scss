@@ -22,7 +22,7 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
   font-weight: 700;
   background: $yellow;
   color: $darkgray;
-  cursor: default;
+  cursor: move;
   border-radius: 3px;
 }
 

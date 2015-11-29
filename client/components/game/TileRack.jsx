@@ -1,7 +1,7 @@
 TileRack = React.createClass({
   renderTiles() {
     return this.props.tiles.map( (tile) => {
-      return (<div className="tile" key={tile._id}>{tile.letter}</div>);
+      return <Tile tile={tile} key={tile._id} />;
     });
   },
   render() {

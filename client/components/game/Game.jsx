@@ -1,6 +1,9 @@
 // Our top-level, data-managing component. It subscribes to our publication
 // and passes all relevant Meteor data down into its children, so that
 // the children can be 100% state/prop based.
+DragDropContext = ReactDnD.DragDropContext;
+Html5Backend    = ReactDnDHTML5Backend;
+
 Game = React.createClass({
   mixins: [ReactMeteorData],
 
@@ -53,3 +56,5 @@ Game = React.createClass({
     return this.data.game ? this.renderGame() : <Loading />;
   }
 });
+
+Game = DragDropContext(Html5Backend)(Game);
