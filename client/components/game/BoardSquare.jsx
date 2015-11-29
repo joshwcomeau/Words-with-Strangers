@@ -1,15 +1,14 @@
 BoardSquare = React.createClass({
   dropTile() {
-    let letter = _.sample(['A','B','C','D','E','F','G','H','I','J','K','L']);
+    // For now, we're going to implement clicking to place the first time
+    // from the rack onto the clicked square.
+    let selectedTile = Tiles.findOne({ location: 'rack' }, {sort: { position: 1 }});
 
-    // This isn't a reactive environment, but it doesn't need to be; the parent
-    // component listens for changes to the collection. We can still update it
-    // from here.
-    Tiles.insert({
-      letter: letter,
-      location: 'board',
-      position: [this.props.x, this.props.y],
-      gameId: this.props.gameId
+    Tiles.update(selectedTile._id, {
+      $set: {
+        location: 'board',
+        position: [this.props.x, this.props.y]
+      }
     });
   },
   render() {
