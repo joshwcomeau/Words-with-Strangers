@@ -1,12 +1,30 @@
 @import 'variables';
 
-$gutter-width: 8px;
+// VARIABLES
+
 $square-size: 50px;
 $num-of-squares: 12;
-$board-width: $square-size * $num-of-squares + ($gutter-width * 2);
-$tile-size: 42px;
+$gutter-width: 8px;
+$tile-board-size: 42px;
+$tile-rack-size: 50px;
+$rack-height: $tile-rack-size + ( $gutter-width * 2);
 $side-panel-width: 280px;
+$board-width: $square-size * $num-of-squares + ($gutter-width * 2);
 $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
+
+// MIXINS
+@mixin tile($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+  font-size: $size * 0.5;
+  text-align: center;
+  font-weight: 700;
+  background: $yellow;
+  color: $darkgray;
+  cursor: default;
+  border-radius: 3px;
+}
 
 #game {
   position: relative;
@@ -49,16 +67,7 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
       right: 0;
       bottom: 0;
       margin: auto;
-      width: $tile-size;
-      height: $tile-size;
-      line-height: $tile-size;
-      text-align: center;
-      font-size: $tile-size * 0.5;
-      font-weight: 700;
-      background: $yellow;
-      color: $darkgray;
-      cursor: default;
-      border-radius: 3px;
+      @include tile($tile-board-size);
     }
   }
 
@@ -83,7 +92,15 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
     position: relative;
     top: $gutter-width * 2;
     width: $board-width;
-    height: 100px; // temp
+    height: $rack-height;
     background: $white;
+    padding: $gutter-width;
+    text-align: center;
+
+    .tile {
+      display: inline-block;
+      margin-right: $gutter-width;
+      @include tile($tile-rack-size);
+    }
   }
 }
