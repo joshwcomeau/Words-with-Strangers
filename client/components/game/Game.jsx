@@ -34,9 +34,7 @@ Game = React.createClass({
           num: 8
         });
       }
-
     }
-
 
     return data;
   },
@@ -48,6 +46,7 @@ Game = React.createClass({
         <SidePanel game={this.data.game} />
         <Board game={this.data.game} tiles={this.data.boardTiles} />
         <TileRack game={this.data.game} tiles={this.data.rackTiles} />
+        <Controls game={this.data.game} />
       </div>
     )
   },

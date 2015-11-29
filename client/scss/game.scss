@@ -79,7 +79,7 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
     padding: $gutter-width;
 
     .side-panel-title {
-      background: $red;
+      background: $navy;
       color: $white;
       font-size: 1.25rem;
       text-align: center;
@@ -90,7 +90,7 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
 
   #tile-rack {
     position: relative;
-    top: $gutter-width * 2;
+    margin-top: $gutter-width * 2;
     width: $board-width;
     height: $rack-height;
     background: $white;
@@ -101,6 +101,58 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
       display: inline-block;
       margin-right: $gutter-width;
       @include tile($tile-rack-size);
+    }
+  }
+
+  #controls {
+    position: relative;
+    margin-top: $gutter-width * 2;
+    width: $board-width;
+    background: $white;
+    display: flex;
+
+    & > div, & > button {
+      display: inline-block;
+    }
+
+    .turn-indicator {
+      flex: 0 0 150px;
+      line-height: 50px;
+      text-align: center;
+      font-weight: 500;
+      background: $navy;
+      color: $white;
+      padding: 0 1rem;
+
+    }
+    .submit-word-container {
+      padding: $gutter-width;
+      flex: 1;
+    }
+
+    .other-actions-container {
+      padding: $gutter-width 0;
+      flex: 0 0 110px;
+
+      button {
+        width: 46px;
+        height: 2.3rem;
+        padding-top: 4px;
+        border-radius: 3px;
+        border: 0;
+        outline: none;
+        color: $white;
+        background: $fadedteal;
+        font-weight: 500;
+        transition: background 0.5s;
+        margin-right: $gutter-width;
+      }
+    }
+
+    .submit-word {
+      width: 100%;
+      background: $red;
+      color: $white;
     }
   }
 }
