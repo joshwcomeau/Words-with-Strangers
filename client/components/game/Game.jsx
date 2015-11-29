@@ -25,16 +25,10 @@ Game = React.createClass({
 
       // TODO: Move this into a collection hook, when game is created
       if ( _.isEmpty(data.rackTiles) ) {
-        console.log("ADding tiles");
-        ['L','O','T','S','T','I','L','E'].forEach( (letter, index) => {
-          Tiles.insert({
-            letter: letter,
-            gameId: gameId,
-            playerId: Meteor.userId(),
-            position: index,
-            location: 'rack',
-            points: 1
-          })
+        Modules.gameLogic.addTilesToPlayerRack({
+          playerId: Meteor.userId(),
+          gameId: gameId,
+          num: 8
         });
       }
 

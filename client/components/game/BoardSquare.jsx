@@ -2,7 +2,7 @@ BoardSquare = React.createClass({
   dropTile() {
     // For now, we're going to implement clicking to place the first time
     // from the rack onto the clicked square.
-    let selectedTile = Tiles.findOne({ location: 'rack' }, {sort: { position: 1 }});
+    let selectedTile = Tiles.findOne({ location: 'rack' }, {sort: { createdAt: 1 }});
 
     // Move the tile to this place on the board
     Tiles.update(selectedTile._id, {
