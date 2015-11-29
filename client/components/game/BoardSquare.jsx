@@ -7,6 +7,7 @@ BoardSquare = React.createClass({
     // from here.
     Tiles.insert({
       letter: letter,
+      location: 'board',
       position: [this.props.x, this.props.y],
       gameId: this.props.gameId
     });
