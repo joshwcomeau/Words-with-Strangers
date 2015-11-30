@@ -1,6 +1,5 @@
 Controls = React.createClass({
   isMyTurn() {
-    console.log("PROPS", this.props);
     return this.props.game.playerTurn === Meteor.userId();
   },
 
