@@ -9,7 +9,11 @@ Controls = React.createClass({
       <div id="controls" className={this.isMyTurn() ? 'my-turn' : 'their-turn'}>
         <div className="turn-indicator">{this.isMyTurn() ? 'Your Turn' : 'Their Turn'}</div>
         <div className="submit-word-container">
-          <button className="button submit-word" disabled={!this.isMyTurn()}>
+          <button
+          className="button submit-word"
+          disabled={!this.isMyTurn()}
+          onClick={Modules.gameLogic.submitWord}
+          >
             Submit Word
           </button>
         </div>
@@ -18,7 +22,7 @@ Controls = React.createClass({
             <i className="fa fa-random"></i>
           </button>
           <button disabled={!this.isMyTurn()}>
-            <i className="fa fa-magnet"></i>
+            <i className="fa fa-undo"></i>
           </button>
         </div>
       </div>
