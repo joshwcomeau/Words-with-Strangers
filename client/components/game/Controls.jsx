@@ -3,6 +3,10 @@ Controls = React.createClass({
     return this.props.game.playerTurn === Meteor.userId();
   },
 
+  submitWord() {
+    Modules.gameLogic.submitWord(this.props.game._id);
+  },
+
   render() {
     return (
       <div id="controls" className={this.isMyTurn() ? 'my-turn' : 'their-turn'}>
@@ -11,7 +15,7 @@ Controls = React.createClass({
           <button
           className="button submit-word"
           disabled={!this.isMyTurn()}
-          onClick={Modules.gameLogic.submitWord}
+          onClick={this.submitWord}
           >
             Submit Word
           </button>
