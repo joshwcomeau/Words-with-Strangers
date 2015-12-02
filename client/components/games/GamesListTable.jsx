@@ -1,8 +1,4 @@
 GamesListTable = React.createClass({
-  gameLink(game) {
-    let url = `/games/${game._id}`;
-    return <a href={url}>{game.title}</a>;
-  },
   games() {
     if ( _.isEmpty(this.props.games) ) {
       return (
@@ -15,14 +11,9 @@ GamesListTable = React.createClass({
       );
     }
 
-    return this.props.games.map( (game) => {
-      return (
-        <tr key={game._id}>
-          <td>{this.gameLink(game)}</td>
-          <td>{moment(game.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
-        </tr>
-      );
-    });
+    return this.props.games.map( (game) => (
+      <GamesListTableRow key={game._id} game={game} />
+    ));
   },
   render() {
 
