@@ -1,8 +1,15 @@
 Meteor.publish('game', function(gameId) {
-  // TODO: limit rack tiles to current user!
   return [
     Games.find({ _id: gameId }),
-    Tiles.find({ gameId: gameId })
+    Tiles.find({
+      gameId: gameId,
+      $or: [
+        // Show tiles placed from previous turns, regardless of player
+        { location: 'board', turnId: { $exists: true } },
+        // Show this player's rack and tentative board tiles
+        { playerId: this.userId }
+      ]
+    })
   ];
 })
 
