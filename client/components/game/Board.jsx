@@ -1,9 +1,9 @@
-const BOARD_SIZE = 12;
+const BOARD_SIZE = 13;
 
 Board = React.createClass({
   findTileAtCoords(x, y) {
     return _.find(this.props.tiles, tile => {
-      return tile.position[0] === x && tile.position[1] === y;
+      return tile.x === x && tile.y === y;
     });
   },
   renderSquare(num) {

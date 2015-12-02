@@ -15,7 +15,6 @@ Game = React.createClass({
     if ( handle.ready() ) {
       data.game = Games.findOne(gameId);
 
-      // Tiles with a 'position' attribute belong on the board
       data.boardTiles = Tiles.find({
         location: 'board',
         gameId:  gameId

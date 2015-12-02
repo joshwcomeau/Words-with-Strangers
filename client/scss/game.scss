@@ -3,7 +3,7 @@
 // VARIABLES
 
 $square-size: 50px;
-$num-of-squares: 12;
+$num-of-squares: 13;
 $gutter-width: 8px;
 $tile-board-size: 42px;
 $tile-rack-size: 50px;
@@ -51,11 +51,13 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
       border-left: 1px solid #CCC;
 
       // Only the right-edge ones should have a right border
-      // Unfortunately I need to hardcode the number of squares here =(
-      &:nth-child(12n) {
+      &:nth-child(#{$num-of-squares}n) {
         border-right: 1px solid #CCC;
       }
-      &:nth-child(n+133) {
+      // Only the bottom row should have a bottom border.
+      // Math = width * width - width + 1.
+      // eg.      13  *  13   - 12
+      &:nth-child(n+#{$num-of-squares * $num-of-squares + $num-of-squares + 1}) {
         border-bottom: 1px solid #CCC;
       }
     }
