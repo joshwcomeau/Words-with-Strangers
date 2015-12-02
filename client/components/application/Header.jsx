@@ -10,7 +10,7 @@ Header = React.createClass({
         <nav>
           { this.props.currentUser ? <HeaderAccount currentUser={this.props.currentUser} /> : <HeaderLogIn /> }
           <a className="nav-link">Leaderboard</a>
-          <a className="nav-link">Games</a>
+          <a className="nav-link" href={FlowRouter.path('gamesList')}>Games</a>
 
 
         </nav>
