@@ -15,7 +15,7 @@ GamesList = React.createClass({
   createGame() {
     Meteor.call('createNewGame', (err, gameId) => {
       if (err) return console.log("error creating game", err);
-
+      console.log("Going to", gameId)
       FlowRouter.go('game', { gameId: gameId });
     })
   },

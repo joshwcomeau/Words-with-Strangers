@@ -8,8 +8,8 @@ Board = React.createClass({
   },
   renderSquare(num) {
     // Figure out this square's co-ordinates.
-    const x = num % BOARD_SIZE;
-    const y = Math.floor(num / BOARD_SIZE);
+    const x = num % Constants.BOARD_SIZE;
+    const y = Math.floor(num / Constants.BOARD_SIZE);
 
     return (
       <BoardSquare key={x + '-' + y} x={x} y={y} gameId={this.props.game._id}>
@@ -20,8 +20,9 @@ Board = React.createClass({
   },
   render() {
     let squares = [];
+    let num;
 
-    for ( let num = 0; num < (BOARD_SIZE * BOARD_SIZE); num++ ) {
+    for ( num = 0; num < (Constants.BOARD_SIZE * Constants.BOARD_SIZE); num++ ) {
       squares.push( this.renderSquare(num) );
     }
 
