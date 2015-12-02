@@ -24,6 +24,8 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
   color: $darkgray;
   cursor: move;
   border-radius: 3px;
+  border-right: 3px solid #BDA259;
+  border-bottom: 3px solid #BDA259;
 }
 
 #game {
@@ -64,11 +66,8 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
 
     .tile {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
+      top:  ($square-size - $tile-board-size) / 2 - 1px;
+      left: ($square-size - $tile-board-size) / 2 - 1px;
       @include tile($tile-board-size);
     }
   }
