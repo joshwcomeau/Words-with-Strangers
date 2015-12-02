@@ -16,16 +16,36 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
 @mixin tile($size) {
   width: $size;
   height: $size;
-  line-height: $size;
-  font-size: $size * 0.5;
-  text-align: center;
-  font-weight: 700;
   background: $yellow;
-  color: $darkgray;
   cursor: move;
   border-radius: 3px;
   border-right: 3px solid #BDA259;
   border-bottom: 3px solid #BDA259;
+
+  &.tile-letter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: $size * 0.5;
+    line-height: $size;
+    text-align: center;
+    font-weight: 700;
+    color: $darkgray;
+  }
+
+  &.tile-points {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $size * 0.4;
+    height: $size * 0.4;
+    line-height: $size * 0.4;
+    text-align: center;
+    font-size: $size * 0.25;
+
+  }
 }
 
 #game {

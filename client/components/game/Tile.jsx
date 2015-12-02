@@ -9,9 +9,10 @@ Tile = React.createClass({
     const { connectDragSource, isDragging } = this.props;
 
     return connectDragSource(
-      <div className="tile" style={{
-        opacity: isDragging ? 0 : 1
-      }}>{this.props.tile.letter}</div>
+      <div className="tile" style={{ opacity: isDragging ? 0 : 1 }}>
+        <div className="tile-letter">{this.props.tile.letter}</div>
+        <div className="tile-points">{this.props.tile.points}</div>
+      </div>
     );
   }
 });
