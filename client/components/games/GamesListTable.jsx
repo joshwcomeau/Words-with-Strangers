@@ -1,28 +1,24 @@
-GamesListTable = React.createClass({
-  games() {
-    if ( _.isEmpty(this.props.games) ) {
-      return (
-        <tr>
-          <td>
-            <h5>Sorry, no active games.</h5>
-            <p>Why not start one?</p>
-          </td>
-        </tr>
-      );
-    }
+GamesListTable = ({games}) => (
+  <table>
+    <tbody>
+      {generateList(games)}
+    </tbody>
+  </table>
+);
 
-    return this.props.games.map( (game) => (
-      <GamesListTableRow key={game._id} game={game} />
-    ));
-  },
-  render() {
-
+generateList = function(games) {
+  if ( _.isEmpty(games) ) {
     return (
-      <table>
-        <tbody>
-          {this.games()}
-        </tbody>
-      </table>
+      <tr>
+        <td>
+          <h5>Sorry, no active games.</h5>
+          <p>Why not start one?</p>
+        </td>
+      </tr>
     );
   }
-})
+
+  return games.map( (game) => (
+    <GamesListTableRow key={game._id} game={game} />
+  ));
+}
