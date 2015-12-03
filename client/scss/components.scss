@@ -35,6 +35,15 @@
   }
 }
 
+.center-section {
+  position: relative;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: $max-width;
+}
+
 .card {
   background: $white;
   border-radius: 2px;

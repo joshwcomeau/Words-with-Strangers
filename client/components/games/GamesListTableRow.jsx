@@ -8,13 +8,16 @@ GamesListTableRow = React.createClass({
       FlowRouter.go('game', {gameId});
     });
   },
-
+  generatePlayerCell() {
+    let players = this.props.game.players
+  },
   render() {
     let game = this.props.game;
     return (
       <tr>
         <td><strong>{game.title}</strong></td>
-        <td>{moment(game.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
+        <td>{this.generatePlayerCell()}</td>
+        <td>{moment(game.createdAt).format('MMM Do, h:mm a')}</td>
         <td>
           <button onClick={this.joinGame}>Join Game</button>
         </td>

@@ -22,12 +22,14 @@ GamesList = React.createClass({
 
   render() {
     return (
-      <div id="games-list">
+      <div id="games-list" className="center-section">
         <header>
-          <button onClick={this.createGame}>Create New</button>
+          <button className="button" onClick={this.createGame}>Create New</button>
           <h4>Current Games</h4>
         </header>
-        { this.data.games ? <GamesListTable games={this.data.games} /> : <Loading /> }
+        <div className="card">
+          { this.data.games ? <GamesListTable games={this.data.games} /> : <Loading /> }
+        </div>
       </div>
     );
   }
