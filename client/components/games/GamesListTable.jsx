@@ -1,10 +1,13 @@
 GamesListTable = ({games}) => (
   <table>
     <thead>
-      <th>Title</th>
-      <th>Players</th>
-      <th>Created</th>
-      <th>Status</th>
+      <tr>
+        <th>Title</th>
+        <th>Players</th>
+        <th>Created</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
     </thead>
     <tbody>
       {generateList(games)}

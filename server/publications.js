@@ -13,7 +13,17 @@ Meteor.publish('game', function(gameId) {
   ];
 })
 
-Meteor.publish('games', function() {
+Meteor.smartPublish('games', function(limit = 10) {
+  // Fetch all players of a given game.
+  // Publish only the fields we need.
+  this.addDependency('games', 'playerIds', function(event) {
+    return Meteor.users.find({
+      _id: { $in: event.playerIds }
+    }, {
+      fields: { profile: 1, username: 1 }
+    });
+  });
+
   return [
     Games.find({ status: 'waiting' })
   ];
