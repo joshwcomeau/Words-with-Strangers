@@ -1,7 +1,7 @@
-SidePanel = ({game}) => (
+SidePanel = ({game, players}) => (
   <div id="side-panel">
     <SidePanelHeader title={game.title} />
-    <SidePanelPlayers />
+    <SidePanelPlayers players={players} gameId={game._id} />
     <SidePanelTurns />
   </div>
 );

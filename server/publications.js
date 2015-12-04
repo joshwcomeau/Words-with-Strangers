@@ -1,6 +1,7 @@
 Meteor.publish('game', function(gameId) {
   return [
     Games.find({ _id: gameId }),
+    Turns.find({ gameId: gameId}),
     Tiles.find({
       gameId: gameId,
       $or: [

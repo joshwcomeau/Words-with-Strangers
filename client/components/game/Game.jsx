@@ -24,6 +24,10 @@ Game = React.createClass({
         location: 'rack',
         gameId: gameId
       }).fetch();
+
+      data.players = Meteor.users.find({
+        _id: { $in: data.game.playerIds }
+      }).fetch();
     }
 
     return data;
@@ -33,7 +37,7 @@ Game = React.createClass({
     //
     return (
       <div id="game">
-        <SidePanel game={this.data.game} />
+        <SidePanel game={this.data.game} players={this.data.players} />
         <Board game={this.data.game} tiles={this.data.boardTiles} />
         <TileRack game={this.data.game} tiles={this.data.rackTiles} />
         <Controls game={this.data.game} />
