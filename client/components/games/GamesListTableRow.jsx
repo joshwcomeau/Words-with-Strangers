@@ -20,13 +20,20 @@ GamesListTableRow = React.createClass({
     ));
   },
   gameLink() {
-    return FlowRouter.path('game', {gameId: this.props.game._id});
+    let game = this.props.game;
+    let url = FlowRouter.path('game', {gameId: game._id});
+
+    if ( Meteor.userId() ) {
+      return <a href={url}>{game.title}</a>
+    } else {
+      return game.title
+    }
   },
   render() {
     let game = this.props.game;
     return (
       <tr>
-        <td><strong><a href={this.gameLink()}>{game.title}</a></strong></td>
+        <td><strong>{this.gameLink()}</strong></td>
         <td>{this.generatePlayerCell()}</td>
         <td>{moment(game.createdAt).format('MMM Do, h:mm a')}</td>
         <td>

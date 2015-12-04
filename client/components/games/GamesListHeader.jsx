@@ -1,6 +1,6 @@
 GamesListHeader = ({isLoggedIn}) => (
   <header>
-    { isLoggedIn ? generateNewButton() : null }
+    { generateNewButton(isLoggedIn) }
     <h4>Current Games</h4>
   </header>
 );
@@ -12,6 +12,11 @@ function createGame() {
   })
 }
 
-function generateNewButton() {
-  return <button className="button" onClick={createGame}>Create New</button>
+function generateNewButton(isLoggedIn) {
+  if ( isLoggedIn ) {
+    return <button className="button" onClick={createGame}>Create New</button>
+  } else {
+    return <button className="button" disabled="true" onClick={createGame}>Log in to Create Games</button>
+  }
+
 }
