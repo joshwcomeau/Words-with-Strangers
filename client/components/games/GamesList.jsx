@@ -9,24 +9,20 @@ GamesList = React.createClass({
       data.games = Games.find({}, { sort: { createdAt: -1 }}).fetch();
     }
 
+    data.user = Meteor.user();
+
     return data;
   },
 
-  createGame() {
-    Meteor.call('createNewGame', (err, gameId) => {
-      if (err) return console.log("error creating game", err);
-      console.log("Going to", gameId)
-      FlowRouter.go('game', { gameId: gameId });
-    })
+  isLoggedIn() {
+    console.log( !!Meteor.userId(), Meteor.user() )
+    return !!Meteor.userId();
   },
 
   render() {
     return (
       <div id="games-list" className="center-section">
-        <header>
-          <button className="button" onClick={this.createGame}>Create New</button>
-          <h4>Current Games</h4>
-        </header>
+        <GamesListHeader isLoggedIn={this.isLoggedIn()} />
         <div className="card">
           { this.data.games ? <GamesListTable games={this.data.games} /> : <Loading /> }
         </div>
