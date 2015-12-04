@@ -22,7 +22,7 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
   border-right: 3px solid #BDA259;
   border-bottom: 3px solid #BDA259;
 
-  &.tile-letter {
+  .tile-letter {
     position: absolute;
     top: 0;
     left: 0;
@@ -35,10 +35,10 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
     color: $darkgray;
   }
 
-  &.tile-points {
+  .tile-points {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -2px;
     width: $size * 0.4;
     height: $size * 0.4;
     line-height: $size * 0.4;
@@ -119,6 +119,7 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
     text-align: center;
 
     .tile {
+      position: relative;
       display: inline-block;
       margin-right: $gutter-width;
       @include tile($tile-rack-size);
