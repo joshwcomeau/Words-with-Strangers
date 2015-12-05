@@ -1,6 +1,10 @@
 SidePanelPlayers = React.createClass({
   renderPlayers() {
-    return this.props.players.map( (player) => {
+    // Sort players by whoever's winning.
+    let players = _.sortBy(this.props.players, (player) => {
+      return player.points(this.props.gameId);
+    }).reverse();
+    return players.map( (player) => {
       return (
         <div className="side-panel-player" key={player._id}>
           <div className="avatar" style={{backgroundImage: `url('${player.profile.photo}')`}}></div>
