@@ -13,14 +13,17 @@ SidePanelTurns = React.createClass({
 
   generateTurns() {
     return this.turns().map( (turn) => {
+      // We want OUR turns to have a special className
+      turnClassName = "side-panel-turn"
+      if ( turn.playerId === Meteor.userId() ) turnClassName += " my-turn"
       return (
-        <div className="side-panel-turn" key={turn._id}>
-          <span className="turn-player-name">{this.playerName(turn)}</span>
-          spelled
-          <span className="turn-word">{turn.word}</span>
-          for
-          <span className="turn-points">{turn.points.total}</span>
-          points.
+        <div className={turnClassName} key={turn._id}>
+          <span className="turn-data turn-player-name">{this.playerName(turn)}</span>
+          &nbsp;spelled&nbsp;
+          <span className="turn-data turn-word">{turn.word}</span>
+          &nbsp;for&nbsp;
+          <span className="turn-data turn-points">{turn.points.total}</span>
+          &nbsp;points.
         </div>
       )
     });

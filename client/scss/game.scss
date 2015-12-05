@@ -97,7 +97,6 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
   #side-panel {
     background: $white;
     width: $side-panel-width;
-    min-height: 500px;
     float: right;
 
     .side-panel-title {
@@ -156,7 +155,32 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
     }
 
     .side-panel-turns {
+      background: $lightgray;
+      padding: $gutter-width;
 
+      .side-panel-turn {
+        padding: $gutter-width;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        font-size: 13px;
+        font-weight: 100;
+        text-align: center;
+        opacity: 0.75;
+
+        &:last-of-type {
+          border-bottom: 0;
+        }
+
+        &.my-turn {
+          opacity: 1;
+        }
+      }
+
+      .turn-data {
+        font-weight: 500;
+      }
+      .turn-word {
+        color: $red;
+      }
     }
   }
 
