@@ -154,6 +154,10 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
 
       }
     }
+
+    .side-panel-turns {
+
+    }
   }
 
   #tile-rack {
