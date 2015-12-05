@@ -1,6 +1,6 @@
 Controls = React.createClass({
   isMyTurn() {
-    return this.props.game.playerTurn === Meteor.userId();
+    return Modules.gameLogic.isMyTurn( this.props.game._id );
   },
 
   submitWord() {

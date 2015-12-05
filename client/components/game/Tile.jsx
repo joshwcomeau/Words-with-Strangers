@@ -5,15 +5,34 @@ Tile = React.createClass({
     connectDragSource: React.PropTypes.func.isRequired,
     isDragging: React.PropTypes.bool.isRequired
   },
-  render() {
+  canBeDragged() {
+    // Tiles can only be dragged if:
+    //  - it is this player's turn
+    //  - the tile isn't part of a previously-placed word.
+
+    const isMyTurn = Modules.gameLogic.isMyTurn( this.props.tile.gameId );
+    return isMyTurn;
+
+  },
+  generateTile(draggable) {
     const { connectDragSource, isDragging } = this.props;
 
-    return connectDragSource(
-      <div className="tile" style={{ opacity: isDragging ? 0 : 1 }}>
+    let tileClassName = "tile";
+    if ( draggable ) {
+      tileClassName += " draggable";
+    }
+
+    const tile = (
+      <div className={tileClassName} style={{ opacity: isDragging ? 0 : 1 }}>
         <div className="tile-letter">{this.props.tile.letter}</div>
         <div className="tile-points">{this.props.tile.points}</div>
       </div>
     );
+
+    return draggable ? connectDragSource(tile) : tile;
+  },
+  render() {
+    return this.generateTile( this.canBeDragged() );
   }
 });
 

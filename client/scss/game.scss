@@ -17,10 +17,12 @@ $game-width: $board-width + ( $gutter-width * 2 ) + $side-panel-width;
   width: $size;
   height: $size;
   background: $yellow;
-  cursor: move;
+  cursor:default;
   border-radius: 3px;
   border-right: 3px solid #BDA259;
   border-bottom: 3px solid #BDA259;
+
+  &.draggable { cursor: move; }
 
   .tile-letter {
     position: absolute;
