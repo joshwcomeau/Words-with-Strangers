@@ -8,10 +8,15 @@ Tile = React.createClass({
   canBeDragged() {
     // Tiles can only be dragged if:
     //  - it is this player's turn
+    //  - the tile belongs to this player.
     //  - the tile isn't part of a previously-placed word.
+    const myId = Meteor.userId();
 
     const isMyTurn = Modules.gameLogic.isMyTurn( this.props.tile.gameId );
-    return isMyTurn;
+    const isMyTile = this.props.tile.playerId === myId;
+    const isActive = this.props.tile.turnId === undefined;
+
+    return isMyTurn && isMyTile && isActive;
 
   },
   generateTile(draggable) {
