@@ -1,6 +1,9 @@
 DropTarget = ReactDnD.DropTarget;
 
 TileRack = React.createClass({
+  shuffleTiles() {
+    this.props.tiles = _.shuffle(this.props.tiles);
+  },
   renderTiles() {
     return this.props.tiles.map( (tile) => {
       return <Tile tile={tile} key={tile._id} />;
